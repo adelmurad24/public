@@ -58,6 +58,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         builder.Entity<Order>().Navigation(d => d.ForStoreUser).AutoInclude(true);
 
 
+        // The project can have dozens of tables, therefore, hunders of these lines !
         builder.Entity<Order>().HasOne(typeof(ApplicationUser), nameof(Order.CreatedByUser)).WithMany().HasForeignKey(nameof(Order.CreatedByUserId)).OnDelete(DeleteBehavior.NoAction);
         builder.Entity<Order>().Navigation(d => d.CreatedByUser).AutoInclude(true);
 
@@ -74,5 +75,5 @@ person.ForStoreUser;  // navigation and eager loading works
 person.CreatedByUser;  // navigation and eager loading works
 
 
-Please give attention to my question because I really do not have anybody else to ask.
+Please give attention to my question because I really do not know anybody else to ask.
 Thank you very much.
